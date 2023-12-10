@@ -1,3 +1,28 @@
-# This file stores configurations for your Shopify app.
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
+name = "boa-home-task-MS"
+client_id = "f237f18325eec542d5607de7e7fc370d"
+application_url = "https://returned-install-variation-brave.trycloudflare.com"
+embedded = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
 scopes = ""
+
+[auth]
+redirect_urls = [
+  "https://returned-install-variation-brave.trycloudflare.com/auth/callback",
+  "https://returned-install-variation-brave.trycloudflare.com/auth/shopify/callback",
+  "https://returned-install-variation-brave.trycloudflare.com/api/auth/callback",
+  "https://returned-install-variation-brave.trycloudflare.com/.shopify/graphiql/auth/callback"
+]
+
+[webhooks]
+api_version = "2023-10"
+
+[pos]
+embedded = false
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "home-assignment-1.myshopify.com"

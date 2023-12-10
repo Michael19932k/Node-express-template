@@ -28,15 +28,30 @@ app.post(
 	shopify.processWebhooks({ webhookHandlers: webhooks })
 );
 
+//console.log("shopify", shopify.api.config)
+
+
+
 // All endpoints after this point will require an active session
 app.use('/api/*', shopify.validateAuthenticatedSession());
+
+app.post('/savecart', (req, res) => {
+	const data = req.body.data;
+	 console.log('data', data);
+	// Returns response
+	res.json({ message: 'Data submitted successfully' });
+  });
 
 app.use(express.json());
 
 app.use(serveStatic(STATIC_PATH, { index: false }));
 
-app.use('/*', shopify.ensureInstalledOnShop(), async (_req, res) => {
-	return res.set('Content-Type', 'text/html').send(readFileSync(join(STATIC_PATH, 'index.html')));
+ app.use('/*', shopify.ensureInstalledOnShop(), async (_req, res) => {
+ 	return res.set('Content-Type', 'text/html').send(readFileSync(join(STATIC_PATH, 'index.html')));
 });
 
-app.listen(PORT);
+
+app.listen(PORT, () => {
+	console.log("PORT", PORT);
+  });
+//app.listen(PORT);
